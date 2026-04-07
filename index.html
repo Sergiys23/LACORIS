@@ -2,328 +2,159 @@
 <html lang="uk">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lacoris Hotel</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<title>Готельно-ресторанний комплекс</title>
 
 <style>
-body {
-  margin:0;
-  font-family:'Inter', sans-serif;
-  background:#f5f5f5;
-}
+body { margin:0; font-family: Arial; background:#111; color:#fff; }
+header { padding:20px; background:#000; text-align:center; }
+section { padding:40px; }
+h2 { text-align:center; margin-bottom:20px; }
 
-h1,h2,h3 { font-family:'Playfair Display', serif; }
-
-header {
-  height:100vh;
-  background:url('https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1500&q=80') center/cover no-repeat;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  color:#fff;
-  position:relative;
-}
-
-header::after {
-  content:'';
-  position:absolute;
-  inset:0;
-  background:rgba(0,0,0,0.6);
-}
-
-header * { position:relative; }
-
-header h1 {
-  font-size:60px;
-  animation:fadeUp 1s ease;
-}
-
-header p {
-  font-size:20px;
-  margin-top:10px;
-  animation:fadeUp 1.2s ease;
-}
-
-.btn {
-  margin-top:25px;
-  padding:14px 30px;
-  background:#c8a96a;
-  color:#fff;
-  border:none;
-  border-radius:30px;
-  cursor:pointer;
-  transition:0.3s;
-}
-
-.btn:hover {
-  transform:scale(1.05);
-  background:#a8894d;
-}
-
-section {
-  padding:80px 20px;
-  max-width:1100px;
-  margin:auto;
-}
-
-.grid {
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:20px;
-}
+.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px; }
 
 .card {
-  background:#fff;
-  padding:20px;
-  border-radius:15px;
-  box-shadow:0 10px 25px rgba(0,0,0,0.08);
+  background:#1c1c1c;
+  padding:15px;
+  border-radius:10px;
   opacity:0;
-  transform:translateY(40px);
+  transform:translateY(30px);
   transition:0.5s;
 }
 
-.card.show {
-  opacity:1;
-  transform:translateY(0);
-}
+.card.show { opacity:1; transform:translateY(0); }
 
-.card img {
-  width:100%;
-  border-radius:10px;
-  margin-bottom:10px;
-}
+img { width:100%; border-radius:10px; }
 
-.dark {
-  background:#111;
+.btn {
+  background:#e63946;
   color:#fff;
-  border-radius:20px;
-  padding:60px 20px;
+  padding:10px 20px;
+  border:none;
+  cursor:pointer;
+  margin-top:10px;
+  border-radius:5px;
 }
 
-footer {
-  text-align:center;
-  padding:20px;
-  background:#000;
-  color:#aaa;
-}
-
-/* MODAL */
-.modal {
-  display:none;
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,0.7);
-  justify-content:center;
-  align-items:center;
-}
-
-.modal-content {
-  background:#fff;
-  padding:25px;
-  border-radius:15px;
-  width:90%;
-  max-width:400px;
-}
-
-.modal-content input {
+input, textarea {
   width:100%;
   padding:10px;
-  margin:8px 0;
-  border:1px solid #ccc;
-  border-radius:8px;
+  margin:5px 0;
+  border:none;
+  border-radius:5px;
 }
 
-.close {
-  float:right;
-  cursor:pointer;
-}
+.dark { background:#000; }
 
-/* ANIMATION */
-@keyframes fadeUp {
-  from {opacity:0; transform:translateY(40px);}
-  to {opacity:1; transform:translateY(0);}
-}
 </style>
 </head>
 
 <body>
 
 <header>
-  <div>
-    <h1>LACORIS HOTEL</h1>
-    <p>Преміальний готельно-ресторанний комплекс</p>
-    <button class="btn" onclick="openModal()">Забронювати</button>
-  </div>
+  <h1>Готель + Ресторан</h1>
+  <button class="btn" onclick="openRegister()">Реєстрація</button>
 </header>
 
+<!-- ПРО КОМПЛЕКС -->
 <section>
-  <h2>Інфраструктура</h2>
-  <div class="grid">
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=800&q=80">
-      <h3>Готель</h3>
-    </div>
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=800&q=80">
-      <h3>Ресторан</h3>
-    </div>
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1501117716987-c8e1ecb2100c?auto=format&fit=crop&w=800&q=80">
-      <h3>Тераса</h3>
-    </div>
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80">
-      <h3>Басейн</h3>
-    </div>
-
-  </div>
+  <h2>Про нас</h2>
+  <p style="text-align:center">
+    Сучасний 6-поверховий готельно-ресторанний комплекс з басейном, терасою та конференц-залом.
+  </p>
 </section>
 
-<section class="dark">
-  <h2>Чому ми</h2>
-  <p>Перевірені рішення, комфорт і сервіс високого рівня.</p>
-</section>
-
-<section>
-  <h2>Відгуки</h2>
-  <div class="grid">
-
-    <div class="card show">
-      <p>"Все на рівні 5★"</p>
-      <b>— Олександр</b>
-    </div>
-
-    <div class="card show">
-      <p>"Дуже комфортно"</p>
-      <b>— Ірина</b>
-    </div>
-
-  </div>
-</section>
-
-<section>
-  <h2>Контакти</h2>
-  <p>📞 <a href="tel:+380509815786">+380 (50) 981 57 86</a></p>
-  <button class="btn" onclick="openModal()">Залишити заявку</button>
-</section>
-
-<section>
-  <h2>Заявки</h2>
-  <button class="btn" onclick="showBookings()">Показати заявки</button>
-  <div id="bookingsList"></div>
-</section>
-
-<footer>
-  © 2026 Lacoris Hotel
-</footer>
-
-<!-- MODAL -->
-<div class="modal" id="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal()">✖</span>
-
-    <h3>Бронювання</h3>
-
-    <input id="name" placeholder="Ім'я">
-    <input id="phone" placeholder="Телефон">
-    <input id="date" type="date">
-
-    <button class="btn" onclick="submitForm()">Відправити</button>
+<!-- РЕЄСТРАЦІЯ -->
+<div id="registerModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:#000a; justify-content:center; align-items:center;">
+  <div style="background:#222; padding:20px; border-radius:10px; width:300px;">
+    <h3>Реєстрація</h3>
+    <input id="regName" placeholder="Ім'я">
+    <input id="regEmail" placeholder="Email">
+    <input id="regPass" type="password" placeholder="Пароль">
+    <button class="btn" onclick="register()">Зареєструватись</button>
+    <button class="btn" onclick="closeRegister()">Закрити</button>
   </div>
 </div>
 
+<!-- ВІДГУКИ -->
+<section class="dark">
+  <h2>Відгуки</h2>
+
+  <div class="grid" id="reviews"></div>
+
+  <h3>Залишити відгук</h3>
+  <textarea id="reviewText" placeholder="Ваш відгук..."></textarea>
+  <button class="btn" onclick="addReview()">Відправити</button>
+</section>
+
 <script>
 
-// Анімація
-const cards = document.querySelectorAll('.card');
+// ================= РЕЄСТРАЦІЯ =================
+function openRegister(){
+  document.getElementById('registerModal').style.display='flex';
+}
 
+function closeRegister(){
+  document.getElementById('registerModal').style.display='none';
+}
+
+function register(){
+  let name = document.getElementById('regName').value;
+  let email = document.getElementById('regEmail').value;
+  let pass = document.getElementById('regPass').value;
+
+  if(!name || !email || !pass){
+    alert("Заповніть всі поля");
+    return;
+  }
+
+  let users = JSON.parse(localStorage.getItem('users')) || [];
+
+  users.push({name, email, pass});
+  localStorage.setItem('users', JSON.stringify(users));
+
+  alert("Реєстрація успішна ✔");
+  closeRegister();
+}
+
+// ================= ВІДГУКИ =================
+function addReview(){
+  let text = document.getElementById('reviewText').value;
+
+  if(!text){
+    alert("Напишіть відгук");
+    return;
+  }
+
+  let reviews = JSON.parse(localStorage.getItem('reviews')) || [];
+  reviews.push(text);
+
+  localStorage.setItem('reviews', JSON.stringify(reviews));
+
+  document.getElementById('reviewText').value = '';
+  loadReviews();
+}
+
+function loadReviews(){
+  let reviews = JSON.parse(localStorage.getItem('reviews')) || [];
+  let container = document.getElementById('reviews');
+
+  container.innerHTML = reviews.map(r => `
+    <div class="card show">${r}</div>
+  `).join('');
+}
+
+// ================= Анімація =================
 window.addEventListener('scroll', () => {
-  cards.forEach(card => {
-    if(card.getBoundingClientRect().top < window.innerHeight - 80){
-      card.classList.add('show');
+  document.querySelectorAll('.card').forEach(el => {
+    if(el.getBoundingClientRect().top < window.innerHeight - 50){
+      el.classList.add('show');
     }
   });
 });
 
-// Modal
-function openModal(){
-  document.getElementById('modal').style.display='flex';
-}
+// старт
+loadReviews();
 
-function closeModal(){
-  document.getElementById('modal').style.display='none';
-}
-
-// Телефон перевірка
-function isValidPhone(phone){
-  return /^[0-9+\s()-]{10,}$/.test(phone);
-}
-
-// Збереження
-function submitForm(){
-
-  const name = document.getElementById('name').value;
-  const phone = document.getElementById('phone').value;
-  const date = document.getElementById('date').value;
-
-  if(!name || !phone || !date){
-    alert('Заповніть всі поля');
-    return;
-  }
-
-  if(!isValidPhone(phone)){
-    alert('Невірний номер телефону');
-    return;
-  }
-
-  let bookings = JSON.parse(localStorage.getItem('bookings')) || [];
-
-  bookings.push({
-    name,
-    phone,
-    date,
-    time: new Date().toLocaleString()
-  });
-
-  localStorage.setItem('bookings', JSON.stringify(bookings));
-
-  alert('Заявка збережена ✔');
-
-  closeModal();
-}
-
-// Показ заявок
-function showBookings(){
-  let bookings = JSON.parse(localStorage.getItem('bookings')) || [];
-
-  const container = document.getElementById('bookingsList');
-
-  if(bookings.length === 0){
-    container.innerHTML = "<p>Немає заявок</p>";
-    return;
-  }
-
-  container.innerHTML = bookings.map(b => `
-    <div class="card show">
-      <p><b>${b.name}</b></p>
-      <p>${b.phone}</p>
-      <p>${b.date}</p>
-      <small>${b.time}</small>
-    </div>
-  `).join('');
-}
-
-</script>
-
-</body>
-</html>
 </script>
 
 </body>
