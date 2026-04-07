@@ -5,26 +5,54 @@
 <title>Готельно-ресторанний комплекс</title>
 
 <style>
-body { margin:0; font-family: Arial; background:#111; color:#fff; }
-header { padding:20px; background:#000; text-align:center; }
-section { padding:40px; }
-h2 { text-align:center; margin-bottom:20px; }
+body {
+  margin:0;
+  font-family: Arial;
+  background:#111;
+  color:#fff;
+}
 
-.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px; }
+/* Навігація */
+nav {
+  background:#000;
+  padding:15px;
+  text-align:center;
+}
+
+nav button {
+  background:#e63946;
+  color:#fff;
+  border:none;
+  padding:10px 15px;
+  margin:5px;
+  cursor:pointer;
+  border-radius:5px;
+}
+
+/* Секції */
+section {
+  padding:40px;
+  display:none;
+}
+
+.active {
+  display:block;
+}
+
+/* Карточки */
+.grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+}
 
 .card {
   background:#1c1c1c;
   padding:15px;
   border-radius:10px;
-  opacity:0;
-  transform:translateY(30px);
-  transition:0.5s;
 }
 
-.card.show { opacity:1; transform:translateY(0); }
-
-img { width:100%; border-radius:10px; }
-
+/* Кнопки */
 .btn {
   background:#e63946;
   color:#fff;
@@ -35,6 +63,7 @@ img { width:100%; border-radius:10px; }
   border-radius:5px;
 }
 
+/* Поля */
 input, textarea {
   width:100%;
   padding:10px;
@@ -42,53 +71,68 @@ input, textarea {
   border:none;
   border-radius:5px;
 }
-
-.dark { background:#000; }
-
 </style>
 </head>
 
 <body>
 
-<header>
-  <h1>Готель + Ресторан</h1>
-  <button class="btn" onclick="openRegister()">Реєстрація</button>
-</header>
+<nav>
+  <button onclick="showPage('home')">Головна</button>
+  <button onclick="showPage('reviews')">Відгуки</button>
+  <button onclick="openRegister()">Реєстрація</button>
+</nav>
 
-<!-- ПРО КОМПЛЕКС -->
-<section>
-  <h2>Про нас</h2>
-  <p style="text-align:center">
-    Сучасний 6-поверховий готельно-ресторанний комплекс з басейном, терасою та конференц-залом.
-  </p>
+<!-- ГОЛОВНА -->
+<section id="home" class="active">
+  <h2>Готель</h2>
+
+  <div class="grid">
+    <div class="card">Номери класу люкс</div>
+    <div class="card">Ресторан</div>
+    <div class="card">Басейн</div>
+    <div class="card">Конференц-зал</div>
+    <div class="card">Тераса</div>
+  </div>
+</section>
+
+<!-- ВІДГУКИ -->
+<section id="reviews">
+  <h2>Відгуки</h2>
+
+  <div id="reviewsList"></div>
+
+  <h3>Додати відгук</h3>
+  <textarea id="reviewText"></textarea>
+  <button class="btn" onclick="addReview()">Відправити</button>
 </section>
 
 <!-- РЕЄСТРАЦІЯ -->
 <div id="registerModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:#000a; justify-content:center; align-items:center;">
+  
   <div style="background:#222; padding:20px; border-radius:10px; width:300px;">
     <h3>Реєстрація</h3>
-    <input id="regName" placeholder="Ім'я">
-    <input id="regEmail" placeholder="Email">
-    <input id="regPass" type="password" placeholder="Пароль">
+
+    <input id="name" placeholder="Ім'я">
+    <input id="email" placeholder="Email">
+    <input id="password" type="password" placeholder="Пароль">
+
     <button class="btn" onclick="register()">Зареєструватись</button>
     <button class="btn" onclick="closeRegister()">Закрити</button>
   </div>
+
 </div>
-
-<!-- ВІДГУКИ -->
-<section class="dark">
-  <h2>Відгуки</h2>
-
-  <div class="grid" id="reviews"></div>
-
-  <h3>Залишити відгук</h3>
-  <textarea id="reviewText" placeholder="Ваш відгук..."></textarea>
-  <button class="btn" onclick="addReview()">Відправити</button>
-</section>
 
 <script>
 
-// ================= РЕЄСТРАЦІЯ =================
+/* ================= ПЕРЕХІД СТОРІНОК ================= */
+function showPage(page){
+
+  document.querySelectorAll("section").forEach(s => s.classList.remove("active"));
+
+  document.getElementById(page).classList.add("active");
+}
+
+/* ================= РЕЄСТРАЦІЯ ================= */
 function openRegister(){
   document.getElementById('registerModal').style.display='flex';
 }
@@ -98,9 +142,10 @@ function closeRegister(){
 }
 
 function register(){
-  let name = document.getElementById('regName').value;
-  let email = document.getElementById('regEmail').value;
-  let pass = document.getElementById('regPass').value;
+
+  let name = document.getElementById('name').value;
+  let email = document.getElementById('email').value;
+  let pass = document.getElementById('password').value;
 
   if(!name || !email || !pass){
     alert("Заповніть всі поля");
@@ -110,49 +155,43 @@ function register(){
   let users = JSON.parse(localStorage.getItem('users')) || [];
 
   users.push({name, email, pass});
+
   localStorage.setItem('users', JSON.stringify(users));
 
-  alert("Реєстрація успішна ✔");
+  alert("Успішна реєстрація ✔");
   closeRegister();
 }
 
-// ================= ВІДГУКИ =================
+/* ================= ВІДГУКИ ================= */
 function addReview(){
+
   let text = document.getElementById('reviewText').value;
 
   if(!text){
-    alert("Напишіть відгук");
+    alert("Введіть текст");
     return;
   }
 
   let reviews = JSON.parse(localStorage.getItem('reviews')) || [];
+
   reviews.push(text);
 
   localStorage.setItem('reviews', JSON.stringify(reviews));
 
-  document.getElementById('reviewText').value = '';
   loadReviews();
+
+  document.getElementById('reviewText').value = "";
 }
 
 function loadReviews(){
-  let reviews = JSON.parse(localStorage.getItem('reviews')) || [];
-  let container = document.getElementById('reviews');
 
-  container.innerHTML = reviews.map(r => `
-    <div class="card show">${r}</div>
-  `).join('');
+  let reviews = JSON.parse(localStorage.getItem('reviews')) || [];
+
+  document.getElementById('reviewsList').innerHTML = reviews.map(r => 
+    `<div class="card">${r}</div>`
+  ).join('');
 }
 
-// ================= Анімація =================
-window.addEventListener('scroll', () => {
-  document.querySelectorAll('.card').forEach(el => {
-    if(el.getBoundingClientRect().top < window.innerHeight - 50){
-      el.classList.add('show');
-    }
-  });
-});
-
-// старт
 loadReviews();
 
 </script>
