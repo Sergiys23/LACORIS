@@ -2,34 +2,64 @@
 <html lang="uk">
 <head>
 <meta charset="UTF-8">
-<title>Hotel Project</title>
+<title>Hotel & Restaurant</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
+
 body {
   margin:0;
-  font-family: Arial, sans-serif;
-  background:#0f0f0f;
+  font-family: 'Inter', sans-serif;
+  background:#0b0b0b;
   color:#fff;
 }
 
-/* Навігація */
+/* NAV */
 nav {
   position:sticky;
   top:0;
-  background:#000;
+  background:rgba(0,0,0,0.85);
+  backdrop-filter: blur(10px);
   padding:15px;
   text-align:center;
 }
 
 nav a {
   color:#fff;
-  margin:0 10px;
+  margin:0 12px;
   text-decoration:none;
-  font-weight:bold;
+  font-weight:500;
+  letter-spacing:1px;
 }
 
+nav a:hover {
+  color:#d4af37;
+}
+
+/* HERO */
+.hero {
+  height:90vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  background:linear-gradient(to bottom, rgba(0,0,0,0.5), #0b0b0b),
+  url('https://images.unsplash.com/photo-1542314831-068cd1dbfeeb') center/cover no-repeat;
+}
+
+.hero h1 {
+  font-family:'Playfair Display', serif;
+  font-size:50px;
+}
+
+.hero p {
+  color:#ccc;
+}
+
+/* SECTIONS */
 section {
-  padding:60px 20px;
+  padding:80px 20px;
 }
 
 .container {
@@ -37,150 +67,116 @@ section {
   margin:auto;
 }
 
-h1, h2 {
+h2 {
+  font-family:'Playfair Display', serif;
   text-align:center;
+  margin-bottom:40px;
 }
 
+/* GRID */
 .grid {
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:20px;
+  gap:25px;
 }
 
 .card {
-  background:#1c1c1c;
-  padding:20px;
-  border-radius:10px;
+  background:#151515;
+  padding:25px;
+  border-radius:12px;
+  border:1px solid #222;
+  transition:0.3s;
 }
 
-.highlight {
-  color:#e63946;
+.card:hover {
+  transform:translateY(-5px);
+  border-color:#d4af37;
 }
 
-/* блок генплан */
-.plan {
-  background:#111;
-  border:1px solid #333;
-  padding:20px;
-  border-radius:10px;
-}
-
-/* кнопка */
+/* BUTTON */
 .btn {
-  background:#e63946;
-  color:#fff;
-  padding:12px 20px;
+  background:#d4af37;
+  color:#000;
+  padding:12px 25px;
   border:none;
   cursor:pointer;
+  margin-top:20px;
   border-radius:5px;
-  display:block;
-  margin:20px auto;
+  font-weight:bold;
 }
 
-/* footer */
+.btn:hover {
+  background:#b8962f;
+}
+
+/* MENU */
+.menu-item {
+  display:flex;
+  justify-content:space-between;
+  border-bottom:1px solid #333;
+  padding:10px 0;
+}
+
+.menu-item span {
+  color:#aaa;
+}
+
+/* FOOTER */
 footer {
   background:#000;
-  padding:20px;
+  padding:30px;
   text-align:center;
+  color:#777;
   font-size:14px;
 }
+
 </style>
 </head>
 
 <body>
 
 <nav>
-  <a href="#concept">Концепція</a>
-  <a href="#plan">Генплан</a>
-  <a href="#structure">Будівля</a>
-  <a href="#features">Фішки</a>
-  <a href="#business">Бізнес</a>
+  <a href="#home">Головна</a>
+  <a href="#about">Про готель</a>
+  <a href="#structure">Структура</a>
+  <a href="#restaurant">Ресторан</a>
 </nav>
 
-<!-- ГОЛОВНА -->
-<section>
+<!-- HERO -->
+<section id="home" class="hero">
+  <div>
+    <h1>Hotel & Restaurant</h1>
+    <p>4⭐ готельний комплекс з видом на озеро</p>
+    <button class="btn">Забронювати</button>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
   <div class="container">
-    <h1>4⭐ Готельний комплекс</h1>
-    <p style="text-align:center">
-      Івано-Франківськ • 6 поверхів • Озеро • Бізнес + Leisure
+    <h2>Концепція</h2>
+    <p style="text-align:center; color:#aaa;">
+      Сучасний 6-поверховий готельно-ресторанний комплекс бізнес-класу з акцентом на комфорт, 
+      приватність та преміальний досвід відпочинку.
     </p>
   </div>
 </section>
 
-<!-- КОНЦЕПЦІЯ -->
-<section id="concept">
-  <div class="container">
-    <h2>📌 Концепція</h2>
-
-    <div class="grid">
-      <div class="card">
-        <h3>Локація</h3>
-        <p>Івано-Франківськ, вул. Мазепи</p>
-      </div>
-
-      <div class="card">
-        <h3>Формат</h3>
-        <p>Business + Leisure Hotel</p>
-      </div>
-
-      <div class="card">
-        <h3>Місткість</h3>
-        <p>~45 номерів (90 місць)</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ГЕНПЛАН -->
-<section id="plan">
-  <div class="container">
-    <h2>🧭 Генплан</h2>
-
-    <div class="plan">
-<pre>
-[ ВУЛ. МАЗЕПИ ]
-        │
- 🚗 В’ЇЗД / DROP-OFF
-        │
- ┌───────────────┐
- │   ГОТЕЛЬ      │
- │   (6 пов.)    │
- └───────────────┘
-        │
- 🌿 ЗЕЛЕНА ЗОНА
-        │
- 🍽️ ТЕРАСА
-        │
- 🌊 ОЗЕРО
-</pre>
-    </div>
-
-    <p style="text-align:center">
-      Основна ідея: орієнтація на озеро та комфортний доступ
-    </p>
-  </div>
-</section>
-
-<!-- СТРУКТУРА -->
+<!-- STRUCTURE -->
 <section id="structure">
   <div class="container">
-    <h2>🏢 Структура будівлі</h2>
+    <h2>Будівля</h2>
 
     <div class="grid">
-
-      <div class="card">
-        <h3>-1 поверх</h3>
-        <p>Паркінг • технічні приміщення • склади</p>
-      </div>
 
       <div class="card">
         <h3>1 поверх</h3>
-        <p>Ресторан • Lobby • Конференц-зал</p>
+        <p>Lobby • Ресторан • Конференц-зал</p>
       </div>
 
       <div class="card">
         <h3>2–5 поверхи</h3>
-        <p>Номерний фонд (Standard / Superior / Deluxe)</p>
+        <p>Номери (Standard / Superior / Deluxe)</p>
       </div>
 
       <div class="card">
@@ -188,60 +184,59 @@ footer {
         <p>Rooftop • SPA • Lounge</p>
       </div>
 
+      <div class="card">
+        <h3>-1 поверх</h3>
+        <p>Паркінг • технічні приміщення</p>
+      </div>
+
     </div>
   </div>
 </section>
 
-<!-- ФІШКИ -->
-<section id="features">
+<!-- RESTAURANT -->
+<section id="restaurant">
   <div class="container">
-    <h2>💎 Фішки</h2>
+    <h2>Ресторан</h2>
 
-    <div class="grid">
-      <div class="card">Панорамні вікна</div>
-      <div class="card">Rooftop</div>
-      <div class="card">Тераса з видом</div>
-      <div class="card">Сучасний дизайн</div>
-      <div class="card">LED фасад</div>
-      <div class="card">Instagram-локації</div>
+    <p style="text-align:center; color:#aaa;">
+      Преміальний ресторан з панорамним видом та авторською кухнею
+    </p>
+
+    <div class="card">
+
+      <h3>Меню</h3>
+
+      <div class="menu-item">
+        <span>Стейк із яловичини</span>
+        <b>450 грн</b>
+      </div>
+
+      <div class="menu-item">
+        <span>Паста Карбонара</span>
+        <b>280 грн</b>
+      </div>
+
+      <div class="menu-item">
+        <span>Цезар з куркою</span>
+        <b>220 грн</b>
+      </div>
+
+      <div class="menu-item">
+        <span>Десерт “Шоколадний фондан”</span>
+        <b>180 грн</b>
+      </div>
+
+      <button class="btn">Переглянути повне меню</button>
+
     </div>
 
   </div>
 </section>
 
-<!-- БІЗНЕС -->
-<section id="business">
-  <div class="container">
-    <h2>📊 Бізнес-модель</h2>
-
-    <div class="grid">
-      <div class="card">
-        <h3>Доходи</h3>
-        <p>Номери + ресторан + івенти + rooftop</p>
-      </div>
-
-      <div class="card">
-        <h3>Перевага</h3>
-        <p>Ресторан і rooftop як окремі драйвери доходу</p>
-      </div>
-
-      <div class="card">
-        <h3>Концепція</h3>
-        <p>Premium experience + вид на озеро</p>
-      </div>
-    </div>
-
-    <button class="btn">Зв’язатись</button>
-  </div>
-</section>
-
+<!-- FOOTER -->
 <footer>
-  <p>© 2026 Hotel Project</p>
+  © 2026 Hotel Project | Premium Concept
 </footer>
-
-</body>
-</html>
-</script>
 
 </body>
 </html>
