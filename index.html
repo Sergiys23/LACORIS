@@ -2,44 +2,45 @@
 <html lang="uk">
 <head>
 <meta charset="UTF-8">
-<title>Готельно-ресторанний комплекс</title>
+<title>Hotel Project</title>
 
 <style>
 body {
   margin:0;
-  font-family: Arial;
-  background:#111;
+  font-family: Arial, sans-serif;
+  background:#0f0f0f;
   color:#fff;
 }
 
 /* Навігація */
 nav {
+  position:sticky;
+  top:0;
   background:#000;
   padding:15px;
   text-align:center;
 }
 
-nav button {
-  background:#e63946;
+nav a {
   color:#fff;
-  border:none;
-  padding:10px 15px;
-  margin:5px;
-  cursor:pointer;
-  border-radius:5px;
+  margin:0 10px;
+  text-decoration:none;
+  font-weight:bold;
 }
 
-/* Секції */
 section {
-  padding:40px;
-  display:none;
+  padding:60px 20px;
 }
 
-.active {
-  display:block;
+.container {
+  max-width:1100px;
+  margin:auto;
 }
 
-/* Карточки */
+h1, h2 {
+  text-align:center;
+}
+
 .grid {
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
@@ -48,28 +49,40 @@ section {
 
 .card {
   background:#1c1c1c;
-  padding:15px;
+  padding:20px;
   border-radius:10px;
 }
 
-/* Кнопки */
+.highlight {
+  color:#e63946;
+}
+
+/* блок генплан */
+.plan {
+  background:#111;
+  border:1px solid #333;
+  padding:20px;
+  border-radius:10px;
+}
+
+/* кнопка */
 .btn {
   background:#e63946;
   color:#fff;
-  padding:10px 20px;
+  padding:12px 20px;
   border:none;
   cursor:pointer;
-  margin-top:10px;
   border-radius:5px;
+  display:block;
+  margin:20px auto;
 }
 
-/* Поля */
-input, textarea {
-  width:100%;
-  padding:10px;
-  margin:5px 0;
-  border:none;
-  border-radius:5px;
+/* footer */
+footer {
+  background:#000;
+  padding:20px;
+  text-align:center;
+  font-size:14px;
 }
 </style>
 </head>
@@ -77,123 +90,157 @@ input, textarea {
 <body>
 
 <nav>
-  <button onclick="showPage('home')">Головна</button>
-  <button onclick="showPage('reviews')">Відгуки</button>
-  <button onclick="openRegister()">Реєстрація</button>
+  <a href="#concept">Концепція</a>
+  <a href="#plan">Генплан</a>
+  <a href="#structure">Будівля</a>
+  <a href="#features">Фішки</a>
+  <a href="#business">Бізнес</a>
 </nav>
 
 <!-- ГОЛОВНА -->
-<section id="home" class="active">
-  <h2>Готель</h2>
-
-  <div class="grid">
-    <div class="card">Номери класу люкс</div>
-    <div class="card">Ресторан</div>
-    <div class="card">Басейн</div>
-    <div class="card">Конференц-зал</div>
-    <div class="card">Тераса</div>
+<section>
+  <div class="container">
+    <h1>4⭐ Готельний комплекс</h1>
+    <p style="text-align:center">
+      Івано-Франківськ • 6 поверхів • Озеро • Бізнес + Leisure
+    </p>
   </div>
 </section>
 
-<!-- ВІДГУКИ -->
-<section id="reviews">
-  <h2>Відгуки</h2>
+<!-- КОНЦЕПЦІЯ -->
+<section id="concept">
+  <div class="container">
+    <h2>📌 Концепція</h2>
 
-  <div id="reviewsList"></div>
+    <div class="grid">
+      <div class="card">
+        <h3>Локація</h3>
+        <p>Івано-Франківськ, вул. Мазепи</p>
+      </div>
 
-  <h3>Додати відгук</h3>
-  <textarea id="reviewText"></textarea>
-  <button class="btn" onclick="addReview()">Відправити</button>
+      <div class="card">
+        <h3>Формат</h3>
+        <p>Business + Leisure Hotel</p>
+      </div>
+
+      <div class="card">
+        <h3>Місткість</h3>
+        <p>~45 номерів (90 місць)</p>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- РЕЄСТРАЦІЯ -->
-<div id="registerModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:#000a; justify-content:center; align-items:center;">
-  
-  <div style="background:#222; padding:20px; border-radius:10px; width:300px;">
-    <h3>Реєстрація</h3>
+<!-- ГЕНПЛАН -->
+<section id="plan">
+  <div class="container">
+    <h2>🧭 Генплан</h2>
 
-    <input id="name" placeholder="Ім'я">
-    <input id="email" placeholder="Email">
-    <input id="password" type="password" placeholder="Пароль">
+    <div class="plan">
+<pre>
+[ ВУЛ. МАЗЕПИ ]
+        │
+ 🚗 В’ЇЗД / DROP-OFF
+        │
+ ┌───────────────┐
+ │   ГОТЕЛЬ      │
+ │   (6 пов.)    │
+ └───────────────┘
+        │
+ 🌿 ЗЕЛЕНА ЗОНА
+        │
+ 🍽️ ТЕРАСА
+        │
+ 🌊 ОЗЕРО
+</pre>
+    </div>
 
-    <button class="btn" onclick="register()">Зареєструватись</button>
-    <button class="btn" onclick="closeRegister()">Закрити</button>
+    <p style="text-align:center">
+      Основна ідея: орієнтація на озеро та комфортний доступ
+    </p>
   </div>
+</section>
 
-</div>
+<!-- СТРУКТУРА -->
+<section id="structure">
+  <div class="container">
+    <h2>🏢 Структура будівлі</h2>
 
-<script>
+    <div class="grid">
 
-/* ================= ПЕРЕХІД СТОРІНОК ================= */
-function showPage(page){
+      <div class="card">
+        <h3>-1 поверх</h3>
+        <p>Паркінг • технічні приміщення • склади</p>
+      </div>
 
-  document.querySelectorAll("section").forEach(s => s.classList.remove("active"));
+      <div class="card">
+        <h3>1 поверх</h3>
+        <p>Ресторан • Lobby • Конференц-зал</p>
+      </div>
 
-  document.getElementById(page).classList.add("active");
-}
+      <div class="card">
+        <h3>2–5 поверхи</h3>
+        <p>Номерний фонд (Standard / Superior / Deluxe)</p>
+      </div>
 
-/* ================= РЕЄСТРАЦІЯ ================= */
-function openRegister(){
-  document.getElementById('registerModal').style.display='flex';
-}
+      <div class="card">
+        <h3>6 поверх</h3>
+        <p>Rooftop • SPA • Lounge</p>
+      </div>
 
-function closeRegister(){
-  document.getElementById('registerModal').style.display='none';
-}
+    </div>
+  </div>
+</section>
 
-function register(){
+<!-- ФІШКИ -->
+<section id="features">
+  <div class="container">
+    <h2>💎 Фішки</h2>
 
-  let name = document.getElementById('name').value;
-  let email = document.getElementById('email').value;
-  let pass = document.getElementById('password').value;
+    <div class="grid">
+      <div class="card">Панорамні вікна</div>
+      <div class="card">Rooftop</div>
+      <div class="card">Тераса з видом</div>
+      <div class="card">Сучасний дизайн</div>
+      <div class="card">LED фасад</div>
+      <div class="card">Instagram-локації</div>
+    </div>
 
-  if(!name || !email || !pass){
-    alert("Заповніть всі поля");
-    return;
-  }
+  </div>
+</section>
 
-  let users = JSON.parse(localStorage.getItem('users')) || [];
+<!-- БІЗНЕС -->
+<section id="business">
+  <div class="container">
+    <h2>📊 Бізнес-модель</h2>
 
-  users.push({name, email, pass});
+    <div class="grid">
+      <div class="card">
+        <h3>Доходи</h3>
+        <p>Номери + ресторан + івенти + rooftop</p>
+      </div>
 
-  localStorage.setItem('users', JSON.stringify(users));
+      <div class="card">
+        <h3>Перевага</h3>
+        <p>Ресторан і rooftop як окремі драйвери доходу</p>
+      </div>
 
-  alert("Успішна реєстрація ✔");
-  closeRegister();
-}
+      <div class="card">
+        <h3>Концепція</h3>
+        <p>Premium experience + вид на озеро</p>
+      </div>
+    </div>
 
-/* ================= ВІДГУКИ ================= */
-function addReview(){
+    <button class="btn">Зв’язатись</button>
+  </div>
+</section>
 
-  let text = document.getElementById('reviewText').value;
+<footer>
+  <p>© 2026 Hotel Project</p>
+</footer>
 
-  if(!text){
-    alert("Введіть текст");
-    return;
-  }
-
-  let reviews = JSON.parse(localStorage.getItem('reviews')) || [];
-
-  reviews.push(text);
-
-  localStorage.setItem('reviews', JSON.stringify(reviews));
-
-  loadReviews();
-
-  document.getElementById('reviewText').value = "";
-}
-
-function loadReviews(){
-
-  let reviews = JSON.parse(localStorage.getItem('reviews')) || [];
-
-  document.getElementById('reviewsList').innerHTML = reviews.map(r => 
-    `<div class="card">${r}</div>`
-  ).join('');
-}
-
-loadReviews();
-
+</body>
+</html>
 </script>
 
 </body>
