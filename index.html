@@ -1,136 +1,270 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lacoris Hotel</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-  <style>
-    body { margin:0; font-family:'Inter', sans-serif; color:#222; background:#f5f5f5; }
-    h1,h2,h3 { font-family:'Playfair Display', serif; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lacoris Hotel</title>
 
-    header {
-      background:url('hotel.jpg') center/cover no-repeat;
-      height:100vh; color:white;
-      display:flex; flex-direction:column; justify-content:center; align-items:center;
-      text-align:center; position:relative;
-    }
-    header::after { content:''; position:absolute; inset:0; background:rgba(0,0,0,0.5); }
-    header * { position:relative; }
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
-    header h1 { font-size:60px; margin:0; }
-    header p { font-size:24px; }
+<style>
+body {
+  margin:0;
+  font-family:'Inter', sans-serif;
+  background:#f5f5f5;
+}
 
-    .btn {
-      margin-top:25px; padding:14px 30px;
-      background:#c8a96a; color:white; text-decoration:none;
-      border-radius:30px; font-weight:500;
-    }
+h1,h2,h3 { font-family:'Playfair Display', serif; }
 
-    section { padding:80px 20px; max-width:1200px; margin:auto; }
+header {
+  height:100vh;
+  background:url('https://images.unsplash.com/photo-1566073771259-6a8506099945') center/cover no-repeat;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  color:#fff;
+  position:relative;
+}
 
-    .grid {
-      display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:25px;
-    }
+header::after {
+  content:'';
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,0.6);
+}
 
-    .card {
-      background:white; padding:25px; border-radius:15px;
-      box-shadow:0 10px 30px rgba(0,0,0,0.08);
-    }
+header * { position:relative; }
 
-    .card h3 { margin-top:0; }
+header h1 {
+  font-size:60px;
+  animation:fadeUp 1s ease;
+}
 
-    .dark-section {
-      background:#1a1a1a; color:white;
-      border-radius:20px;
-      padding:60px 30px;
-    }
+header p {
+  font-size:20px;
+  margin-top:10px;
+  animation:fadeUp 1.2s ease;
+}
 
-    footer {
-      text-align:center; padding:20px;
-      background:#111; color:#aaa;
-    }
-  </style>
+.btn {
+  margin-top:25px;
+  padding:14px 30px;
+  background:#c8a96a;
+  color:#fff;
+  border:none;
+  border-radius:30px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.btn:hover {
+  transform:scale(1.05);
+  background:#a8894d;
+}
+
+section {
+  padding:80px 20px;
+  max-width:1100px;
+  margin:auto;
+}
+
+.grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+}
+
+.card {
+  background:#fff;
+  padding:20px;
+  border-radius:15px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.08);
+  opacity:0;
+  transform:translateY(40px);
+  transition:0.5s;
+}
+
+.card.show {
+  opacity:1;
+  transform:translateY(0);
+}
+
+.card img {
+  width:100%;
+  border-radius:10px;
+  margin-bottom:10px;
+}
+
+.dark {
+  background:#111;
+  color:#fff;
+  border-radius:20px;
+  padding:60px 20px;
+}
+
+footer {
+  text-align:center;
+  padding:20px;
+  background:#000;
+  color:#aaa;
+}
+
+/* MODAL */
+.modal {
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.7);
+  justify-content:center;
+  align-items:center;
+}
+
+.modal-content {
+  background:#fff;
+  padding:25px;
+  border-radius:15px;
+  width:90%;
+  max-width:400px;
+}
+
+.modal-content input {
+  width:100%;
+  padding:10px;
+  margin:8px 0;
+  border:1px solid #ccc;
+  border-radius:8px;
+}
+
+.close {
+  float:right;
+  cursor:pointer;
+}
+
+/* ANIMATION */
+@keyframes fadeUp {
+  from {opacity:0; transform:translateY(40px);}
+  to {opacity:1; transform:translateY(0);}
+}
+</style>
 </head>
+
 <body>
 
 <header>
-  <h1>LACORIS HOTEL</h1>
-  <p>6-поверховий готельно-ресторанний комплекс преміум класу</p>
-  <a href="#contact" class="btn">Забронювати</a>
+  <div>
+    <h1>LACORIS HOTEL</h1>
+    <p>Преміальний готельно-ресторанний комплекс</p>
+    <button class="btn" onclick="openModal()">Забронювати</button>
+  </div>
 </header>
-
-<section>
-  <h2>Про комплекс</h2>
-  <p>
-    Lacoris Hotel — сучасний багатофункціональний комплекс, що включає готель, ресторан,
-    конференц-зал та зону відпочинку. Ідеальне місце для бізнесу, подій та комфортного проживання.
-  </p>
-</section>
 
 <section>
   <h2>Інфраструктура</h2>
   <div class="grid">
+
     <div class="card">
-      <h3>Готель (6 поверхів)</h3>
-      <p>Сучасні номери різних категорій з видом на місто та озеро</p>
+      <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb">
+      <h3>Готель</h3>
+      <p>Комфортні номери</p>
     </div>
+
     <div class="card">
+      <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de">
       <h3>Ресторан</h3>
-      <p>Європейська кухня, авторські страви та винна карта</p>
+      <p>Авторська кухня</p>
     </div>
+
     <div class="card">
-      <h3>Конференц-зал</h3>
-      <p>Для бізнес-зустрічей, презентацій та подій</p>
+      <img src="https://images.unsplash.com/photo-1501117716987-c8e1ecb2100c">
+      <h3>Тераса</h3>
+      <p>Відпочинок і вид</p>
     </div>
-    <div class="card">
-      <h3>Тераса / Rooftop</h3>
-      <p>Зона відпочинку з панорамним видом та коктейлями</p>
-    </div>
-    <div class="card">
-      <h3>Басейн</h3>
-      <p>Зона релаксу для гостей готелю</p>
-    </div>
-    <div class="card">
-      <h3>Локація</h3>
-      <p>Центр міста, поруч озеро та інфраструктура</p>
-    </div>
+
   </div>
 </section>
 
-<section class="dark-section">
-  <h2>Для кого цей комплекс</h2>
-  <div class="grid">
-    <div class="card">
-      <h3>Бізнес</h3>
-      <p>Конференції, переговори, корпоративи</p>
-    </div>
-    <div class="card">
-      <h3>Відпочинок</h3>
-      <p>Комфортне проживання та релакс</p>
-    </div>
-    <div class="card">
-      <h3>Події</h3>
-      <p>Весілля, святкування, заходи</p>
-    </div>
-  </div>
+<section class="dark">
+  <h2>Чому ми</h2>
+  <p>Якість, комфорт і перевірені рішення — без експериментів.</p>
 </section>
 
-<section id="contact">
+<section>
   <h2>Контакти</h2>
-  <p>📞 +38 (050) 981 57 86</p>
-  <p>📍 Івано-Франківськ, вул. Гетьмана Мазепи, 144</p>
-  <a class="btn" href="#">Залишити заявку</a>
+  <p>📞 <a href="tel:+380971234567">+38 (097) 123 45 67</a></p>
+  <button class="btn" onclick="openModal()">Залишити заявку</button>
 </section>
 
 <footer>
-  <p>© 2026 Lacoris Hotel — Преміум готельно-ресторанний комплекс</p>
+  © 2026 Lacoris Hotel
 </footer>
 
-</body>
-</html>
+<!-- MODAL -->
+<div class="modal" id="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">✖</span>
 
-</section><footer>
-  <p>© 2026 Lacoris Hotel — Всі права захищені</p>
-</footer></body>
+    <h3>Бронювання</h3>
+
+    <input id="name" placeholder="Ім'я">
+    <input id="phone" placeholder="Телефон">
+    <input id="date" type="date">
+
+    <button class="btn" onclick="submitForm()">Відправити</button>
+  </div>
+</div>
+
+<script>
+
+// Анімація
+const cards = document.querySelectorAll('.card');
+
+window.addEventListener('scroll', () => {
+  cards.forEach(card => {
+    if(card.getBoundingClientRect().top < window.innerHeight - 80){
+      card.classList.add('show');
+    }
+  });
+});
+
+// Modal
+function openModal(){
+  document.getElementById('modal').style.display='flex';
+}
+
+function closeModal(){
+  document.getElementById('modal').style.display='none';
+}
+
+// Збереження заявки (простий варіант)
+function submitForm(){
+
+  const name = document.getElementById('name').value;
+  const phone = document.getElementById('phone').value;
+  const date = document.getElementById('date').value;
+
+  if(!name || !phone || !date){
+    alert('Заповніть всі поля');
+    return;
+  }
+
+  let bookings = JSON.parse(localStorage.getItem('bookings')) || [];
+
+  bookings.push({
+    name,
+    phone,
+    date,
+    time: new Date().toLocaleString()
+  });
+
+  localStorage.setItem('bookings', JSON.stringify(bookings));
+
+  alert('Заявка збережена ✔');
+
+  closeModal();
+}
+
+</script>
+
+</body>
 </html>
