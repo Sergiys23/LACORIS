@@ -1,109 +1,135 @@
-<!DOCTYPE html><html lang="uk">
+<!DOCTYPE html>
+<html lang="uk">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lacoris Hotel</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
-    body { margin:0; font-family:'Inter', sans-serif; color:#222; background:#f8f8f8; }
-    h1,h2,h3 { font-family:'Playfair Display', serif; }header {
-  background:url('https://images.unsplash.com/photo-1566073771259-6a8506099945') center/cover no-repeat;
-  height:100vh; color:white;
-  display:flex; flex-direction:column; justify-content:center; align-items:center;
-  text-align:center; position:relative;
-}
-header::after {
-  content:''; position:absolute; inset:0; background:rgba(0,0,0,0.4);
-}
-header * { position:relative; }
+    body { margin:0; font-family:'Inter', sans-serif; color:#222; background:#f5f5f5; }
+    h1,h2,h3 { font-family:'Playfair Display', serif; }
 
-header h1 { font-size:56px; margin:0; letter-spacing:2px; }
-header p { font-size:22px; margin-top:10px; }
+    header {
+      background:url('hotel.jpg') center/cover no-repeat;
+      height:100vh; color:white;
+      display:flex; flex-direction:column; justify-content:center; align-items:center;
+      text-align:center; position:relative;
+    }
+    header::after { content:''; position:absolute; inset:0; background:rgba(0,0,0,0.5); }
+    header * { position:relative; }
 
-.btn {
-  margin-top:25px; padding:14px 30px;
-  background:#c8a96a; color:white; text-decoration:none;
-  border-radius:30px; font-weight:500;
-  transition:0.3s;
-}
-.btn:hover { background:#b89655; }
+    header h1 { font-size:60px; margin:0; }
+    header p { font-size:24px; }
 
-section { padding:80px 20px; max-width:1200px; margin:auto; }
+    .btn {
+      margin-top:25px; padding:14px 30px;
+      background:#c8a96a; color:white; text-decoration:none;
+      border-radius:30px; font-weight:500;
+    }
 
-.grid {
-  display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:30px;
-}
+    section { padding:80px 20px; max-width:1200px; margin:auto; }
 
-.card {
-  background:white; padding:25px; border-radius:15px;
-  box-shadow:0 10px 30px rgba(0,0,0,0.08);
-  transition:0.3s;
-}
-.card:hover { transform:translateY(-5px); }
+    .grid {
+      display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:25px;
+    }
 
-.gallery img {
-  width:100%; border-radius:15px;
-  height:220px; object-fit:cover;
-}
+    .card {
+      background:white; padding:25px; border-radius:15px;
+      box-shadow:0 10px 30px rgba(0,0,0,0.08);
+    }
 
-.contact-box {
-  background:#1f1f1f; color:white;
-  padding:40px; border-radius:15px;
-  text-align:center;
-}
+    .card h3 { margin-top:0; }
 
-footer {
-  text-align:center; padding:20px;
-  background:#111; color:#aaa;
-}
+    .dark-section {
+      background:#1a1a1a; color:white;
+      border-radius:20px;
+      padding:60px 30px;
+    }
 
+    footer {
+      text-align:center; padding:20px;
+      background:#111; color:#aaa;
+    }
   </style>
 </head>
-<body><header>
+<body>
+
+<header>
   <h1>LACORIS HOTEL</h1>
-  <p>Тиша води. Ритм міста.</p>
-  <a href="#contact" class="btn">Забронювати номер</a>
-</header><section>
+  <p>6-поверховий готельно-ресторанний комплекс преміум класу</p>
+  <a href="#contact" class="btn">Забронювати</a>
+</header>
+
+<section>
   <h2>Про комплекс</h2>
   <p>
-    Lacoris Hotel — сучасний готельно-ресторанний комплекс біля озера.
-    Ідеальне поєднання елегантності, природи та міської інфраструктури.
+    Lacoris Hotel — сучасний багатофункціональний комплекс, що включає готель, ресторан,
+    конференц-зал та зону відпочинку. Ідеальне місце для бізнесу, подій та комфортного проживання.
   </p>
-</section><section>
-  <h2>Переваги</h2>
+</section>
+
+<section>
+  <h2>Інфраструктура</h2>
   <div class="grid">
     <div class="card">
-      <h3>Стильні номери</h3>
-      <p>Продуманий комфорт та сучасний дизайн</p>
+      <h3>Готель (6 поверхів)</h3>
+      <p>Сучасні номери різних категорій з видом на місто та озеро</p>
     </div>
     <div class="card">
       <h3>Ресторан</h3>
-      <p>Європейська кухня з панорамою на воду</p>
+      <p>Європейська кухня, авторські страви та винна карта</p>
     </div>
     <div class="card">
-      <h3>Rooftop</h3>
-      <p>Коктейлі, атмосфера та заходи сонця</p>
+      <h3>Конференц-зал</h3>
+      <p>Для бізнес-зустрічей, презентацій та подій</p>
+    </div>
+    <div class="card">
+      <h3>Тераса / Rooftop</h3>
+      <p>Зона відпочинку з панорамним видом та коктейлями</p>
+    </div>
+    <div class="card">
+      <h3>Басейн</h3>
+      <p>Зона релаксу для гостей готелю</p>
     </div>
     <div class="card">
       <h3>Локація</h3>
-      <p>Центр міста + озеро поруч</p>
+      <p>Центр міста, поруч озеро та інфраструктура</p>
     </div>
   </div>
-</section><section>
-  <h2>Галерея</h2>
-  <div class="grid gallery">
-    <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511">
-    <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa">
-    <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb">
-    <img src="https://images.unsplash.com/photo-1501117716987-c8e1ecb210c4">
+</section>
+
+<section class="dark-section">
+  <h2>Для кого цей комплекс</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Бізнес</h3>
+      <p>Конференції, переговори, корпоративи</p>
+    </div>
+    <div class="card">
+      <h3>Відпочинок</h3>
+      <p>Комфортне проживання та релакс</p>
+    </div>
+    <div class="card">
+      <h3>Події</h3>
+      <p>Весілля, святкування, заходи</p>
+    </div>
   </div>
-</section><section id="contact">
-  <div class="contact-box">
-    <h2>Контакти</h2>
-    <p>📞 +38 (050) 981 57 86</p>
-    <p>📍 Івано-Франківськ, вул. Гетьмана Мазепи, 144</p>
-    <a class="btn" href="https://t.me/">Написати в Telegram</a>
-  </div>
+</section>
+
+<section id="contact">
+  <h2>Контакти</h2>
+  <p>📞 +38 (050) 981 57 86</p>
+  <p>📍 Івано-Франківськ, вул. Гетьмана Мазепи, 144</p>
+  <a class="btn" href="#">Залишити заявку</a>
+</section>
+
+<footer>
+  <p>© 2026 Lacoris Hotel — Преміум готельно-ресторанний комплекс</p>
+</footer>
+
+</body>
+</html>
+
 </section><footer>
   <p>© 2026 Lacoris Hotel — Всі права захищені</p>
 </footer></body>
