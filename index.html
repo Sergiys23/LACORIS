@@ -18,7 +18,7 @@ h1,h2,h3 { font-family:'Playfair Display', serif; }
 
 header {
   height:100vh;
-  background:url('https://images.unsplash.com/photo-1566073771259-6a8506099945') center/cover no-repeat;
+  background:url('https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1500&q=80') center/cover no-repeat;
   display:flex;
   justify-content:center;
   align-items:center;
@@ -164,21 +164,23 @@ footer {
   <div class="grid">
 
     <div class="card">
-      <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb">
+      <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=800&q=80">
       <h3>Готель</h3>
-      <p>Комфортні номери</p>
     </div>
 
     <div class="card">
-      <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de">
+      <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=800&q=80">
       <h3>Ресторан</h3>
-      <p>Авторська кухня</p>
     </div>
 
     <div class="card">
-      <img src="https://images.unsplash.com/photo-1501117716987-c8e1ecb2100c">
+      <img src="https://images.unsplash.com/photo-1501117716987-c8e1ecb2100c?auto=format&fit=crop&w=800&q=80">
       <h3>Тераса</h3>
-      <p>Відпочинок і вид</p>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80">
+      <h3>Басейн</h3>
     </div>
 
   </div>
@@ -186,13 +188,36 @@ footer {
 
 <section class="dark">
   <h2>Чому ми</h2>
-  <p>Якість, комфорт і перевірені рішення — без експериментів.</p>
+  <p>Перевірені рішення, комфорт і сервіс високого рівня.</p>
+</section>
+
+<section>
+  <h2>Відгуки</h2>
+  <div class="grid">
+
+    <div class="card show">
+      <p>"Все на рівні 5★"</p>
+      <b>— Олександр</b>
+    </div>
+
+    <div class="card show">
+      <p>"Дуже комфортно"</p>
+      <b>— Ірина</b>
+    </div>
+
+  </div>
 </section>
 
 <section>
   <h2>Контакти</h2>
-  <p>📞 <a href="tel:+380971234567">+380 (50) 981 57 86</a></p>
+  <p>📞 <a href="tel:+380509815786">+380 (50) 981 57 86</a></p>
   <button class="btn" onclick="openModal()">Залишити заявку</button>
+</section>
+
+<section>
+  <h2>Заявки</h2>
+  <button class="btn" onclick="showBookings()">Показати заявки</button>
+  <div id="bookingsList"></div>
 </section>
 
 <footer>
@@ -236,7 +261,12 @@ function closeModal(){
   document.getElementById('modal').style.display='none';
 }
 
-// Збереження заявки (простий варіант)
+// Телефон перевірка
+function isValidPhone(phone){
+  return /^[0-9+\s()-]{10,}$/.test(phone);
+}
+
+// Збереження
 function submitForm(){
 
   const name = document.getElementById('name').value;
@@ -245,6 +275,11 @@ function submitForm(){
 
   if(!name || !phone || !date){
     alert('Заповніть всі поля');
+    return;
+  }
+
+  if(!isValidPhone(phone)){
+    alert('Невірний номер телефону');
     return;
   }
 
@@ -264,6 +299,31 @@ function submitForm(){
   closeModal();
 }
 
+// Показ заявок
+function showBookings(){
+  let bookings = JSON.parse(localStorage.getItem('bookings')) || [];
+
+  const container = document.getElementById('bookingsList');
+
+  if(bookings.length === 0){
+    container.innerHTML = "<p>Немає заявок</p>";
+    return;
+  }
+
+  container.innerHTML = bookings.map(b => `
+    <div class="card show">
+      <p><b>${b.name}</b></p>
+      <p>${b.phone}</p>
+      <p>${b.date}</p>
+      <small>${b.time}</small>
+    </div>
+  `).join('');
+}
+
+</script>
+
+</body>
+</html>
 </script>
 
 </body>
