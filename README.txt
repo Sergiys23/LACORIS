@@ -1,1 +1,0 @@
-Upload all files from this folder to the root of your GitHub repository, then enable GitHub Pages: Settings -> Pages -> Deploy from a branch -> main / root.
